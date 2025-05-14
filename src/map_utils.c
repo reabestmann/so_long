@@ -6,14 +6,13 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:05:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 11:36:53 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:23:33 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
-/* Function to print map (for testing) */
+/* Function to print map (for testing)
 void	print_map(char **map)
 {
 	int	i;
@@ -21,10 +20,10 @@ void	print_map(char **map)
 	i = 0;
 	while (map[i])
 		ft_putstr_fd(map[i++], 1);
-}
+}*/
 
 /* Funtion to get the number of lines in .ber file */
-static int	map_height(char *file)
+int	map_height(char *file)
 {
 	int		fd;
 	int		height;
@@ -45,6 +44,28 @@ static int	map_height(char *file)
 	return (height);
 }
 
+/* Function to get the number of columns in .ber file */
+int	map_width(char *file)
+{
+	int		fd;
+	int		width;
+	char	c;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (-1);
+	while (read(fd, &c, 1) > 0)
+	{
+		if (c == '\n' || c == '\0')
+			break ;
+		width++;
+	}
+	close(fd);
+	if (!width)
+		return (-1);
+	return (width);
+}
+	
 /* Function to parse map into a 2D array */
 char	**get_map(char *file)
 {

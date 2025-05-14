@@ -6,7 +6,7 @@
 #    By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:45:55 by rbestman          #+#    #+#              #
-#    Updated: 2025/05/13 17:39:21 by rbestman         ###   ########.fr        #
+#    Updated: 2025/05/14 15:38:05 by rbestman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,15 @@ CFLAGS = -Wall -Wextra -Werror -Ift_printf -Ilibft -Iincludes
 LIBFT_DIR = libft
 PRINTF_DIR = ft_printf
 SRC_DIR = src
+
+# Uncomment the one you're using
+
+#MLX_DIR = minilibx-linux
+#MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm  # Linux
+
+#MLX_DIR = minilibx-mac
+#MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit  # macOS
+
 
 # libft + printf files
 LIBFT = $(LIBFT_DIR)/libft.a

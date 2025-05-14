@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:21:12 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 11:03:03 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:52:25 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 int	main(int params, char **argv)
 {
 	char	**map;
+	t_game	game;
 
 	if (params == 2)
 	{
-		map = get_map(argv[1]);
+		map = get_map(argv[1], &game);
 		if (!map)
 			return (1);
-		print_map(map);
+		init_window(&game, map_width(argv[1]), map_height(argv[1]));
+		load_images(&game);
+		draw_map(map, &game);
+		mlx_loop(game.mlx);
 		free_array(map);
 		return (0);
 	}

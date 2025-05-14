@@ -6,32 +6,27 @@
 /*   By: rbestman <rbestman@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:15:31 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 11:21:43 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:35:03 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
-#endif
-
-
 static char	*append_buffers(char *small_buf, char *big_buf)
 {
-	char *temp_buf;
+	char	*temp_buf;
 
 	temp_buf = ft_strjoin(big_buf, small_buf);
 	if (!temp_buf)
-	return (free(big_buf), NULL);
+		return (free(big_buf), NULL);
 	free(big_buf);
 	return (temp_buf);
 }
 
 static char	*get_line(char *big_buf)
 {
-	size_t len;
-	char *line;
+	size_t	len;
+	char	*line;
 
 	len = 0;
 	if (!big_buf || *big_buf == '\0')
@@ -46,10 +41,10 @@ static char	*get_line(char *big_buf)
 	return (line);
 }
 
-static char *read_into_buffer(char *big_buf, int fd)
+static char	*read_into_buffer(char *big_buf, int fd)
 {
-	char *small_buf;
-	int bytes_read;
+	char	*small_buf;
+	int		bytes_read;
 
 	if (!big_buf)
 		big_buf = ft_strdup("");
@@ -70,15 +65,15 @@ static char *read_into_buffer(char *big_buf, int fd)
 		return (free(big_buf), NULL);
 	if (bytes_read == 0 && (!big_buf || *big_buf == '\0'))
 		return (free(big_buf), NULL);
-		return (big_buf);
+	return (big_buf);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char *big_buf;
-	char *temp_buf;
-	char *line;
-	size_t len;
+	static char	*big_buf;
+	char		*temp_buf;
+	char		*line;
+	size_t		len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
