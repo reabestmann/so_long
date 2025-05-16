@@ -6,12 +6,13 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:12:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 15:13:13 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:33:06 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* Function that turns each .xpm file into an image */
 void	load_images(t_game *game)
 {
 	int	w;
@@ -29,6 +30,7 @@ void	load_images(t_game *game)
 			game->mlx, "textures/collectible.xpm", &w, &h);
 }
 
+/* Helper Function to put specified texture images into the window */
 static void	put_images(t_game *game, int c, int x, int y)
 {
 	if (c == '1')
@@ -48,6 +50,7 @@ static void	put_images(t_game *game, int c, int x, int y)
 			game->mlx, game->window, game->collectible, x, y);
 }
 
+/* Function that creates the map inside the window line by line */
 void	draw_map(t_game *game)
 {
 	int	y;
@@ -70,6 +73,7 @@ void	draw_map(t_game *game)
 	}
 }
 
+/* Function that creates a new game window and starts it */
 void	init_window(t_game *game, int map_width, int map_height)
 {
 	if (!map_width || !map_height)

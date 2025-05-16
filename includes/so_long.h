@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:39:21 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 15:19:29 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:21:52 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_game
 /* get_next_line.c */
 char	*get_next_line(int fd);
 /* map_utils.c */
+/* void	print_map(char **map) //for testing */
 char	**get_map(char *file);
-void	print_map(char **map);
 int		map_height(char *file);
 int		map_width(char *file);
 /* window_utils.c */
