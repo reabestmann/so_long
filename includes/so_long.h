@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:39:21 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 14:53:12 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:19:29 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 # define SO_LONG_H
 
 /* BUFFER for get_next_line */
-#ifndef BUFFER_SIZE
+# ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
-#endif
+# endif
 
 /* TILE_SIZE for draw_window */
-#ifndef TILE_SIZE
-# define TILE_SIZE 64
-#endif
+# ifndef TILE_SIZE
+#  define TILE_SIZE 64
+# endif
 
 /* EVENT_CLOSE for closing the window safely */
-#if defined (__APPLE__)
-# define EVENT_CLOSE 17
-#elif defined (__linux__)
-# define EVENT_CLOSE 33
-#endif
+# ifdef __APPLE__
+#  define EVENT_CLOSE 17
+# else
+#  define EVENT_CLOSE 33
+# endif
 
 /* included libraries */
 # include "ft_printf.h"
@@ -46,28 +46,28 @@ typedef struct s_game
 	char	**map;
 	void	*mlx;
 	void	*window;
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 	void	*wall;
 	void	*floor;
 	void	*player;
 	void	*exit;
 	void	*collectible;
-} t_game;
+}	t_game;
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
 /* map_utils.c */
 char	**get_map(char *file);
 void	print_map(char **map);
-int	map_height(char *file);
-int	map_width(char *file);
+int		map_height(char *file);
+int		map_width(char *file);
 /* window_utils.c */
-void    init_window(t_game *game, int map_width, int map_height);
+void	init_window(t_game *game, int map_width, int map_height);
 void	load_images(t_game *game);
 void	draw_map(t_game *game);
 /* mem_err_utils.c */
 void	error(char *message);
 void	free_array(char **map);
-int	close_window(t_game *game);
+int		close_window(t_game *game);
 #endif
