@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:05:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 17:23:33 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:30:31 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	map_width(char *file)
 		return (-1);
 	return (width);
 }
-	
+
 /* Function to parse map into a 2D array */
 char	**get_map(char *file)
 {

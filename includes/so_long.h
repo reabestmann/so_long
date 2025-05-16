@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:39:21 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 17:52:32 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:38:44 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 # define SO_LONG_H
 
 /* BUFFER for get_next_line */
-# ifndef BUFFER_SIZE
+#ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
-# endif
+#endif
+
+/* TILE_SIZE for draw_window */
+#ifndef TILE_SIZE
+# define TILE_SIZE 64
+#endif
 
 /* included libraries */
 # include "ft_printf.h"
@@ -24,6 +29,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "mlx.h"
 
 /* Struct for MLX */
 typedef struct s_game
@@ -36,11 +42,12 @@ typedef struct s_game
 	void	*floor;
 	void	*player;
 	void	*exit;
+	void	*collectible;
 } t_game
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
-/* map_utils.c */
+/* parse_map_utils.c */
 char	**get_map(char *file);
 void	print_map(char **map);
 void	free_array(char **map);

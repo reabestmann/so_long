@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:12:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 17:52:21 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:41:10 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,48 @@ void	error(char *str)
 	exit (1);
 }
 
-void    load_images(t_game *game);
-void    draw_map(char **map, t_game *game);
+void	load_images(t_game *game)
+{
+	int	w;
+	int	h;
+
+	game->wall = mlx_xpm_file_to_image(game->mlx, "textures/wall.xpm", &w, &h);
+	game->floor = mlx_xpm_file_to_image(game->mlx, "textures/floor.xpm", &w, &h);
+	game->player = mlx_xpm_file_to_image(game->mlx, "textures/player.xpm", &w, &h);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &w, &h);
+	game->collectible = mlx_xpm_file_to_image(game->mlx, "textures/collectible.xpm", &w, &h);
+}
+
+void	draw_map(char **map, t_game *game)
+{
+	int	y;
+	int	x;
+	int	pixel_x;
+	int	pixel_y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			pixel_x = x * TILE_SIZE;
+			pixel_y = y * TILE_SIZE;
+			if (map[y][x] == '1')
+				mlx_put_image_to_window(game->mlx, game->window, game->wall, pixel_x, pixel_y);
+			else if (map[y][x] == '0')
+				mlx_put_image_to_window(game->mlx, game->window, game->floor, pixel_x, pixel_y);
+			else if (map[y][x] == 'P')
+				mlx_put_image_to_window(game->mlx, game->window, game->player, pixel_x, pixel_y);
+			else if (map[y][x] == 'E')
+				mlx_put_image_to_window(game->mlx, game->window, game->exit, pixel_x, pixel_y);
+			else if (map[y][x] == 'C')
+				mlx_put_image_to_window(game->mlx, game->window, game->exit, pixel_x, pixel_y);
+			x++;
+		}
+		y++;
+	}
+}
 
 void	init_window(t_game *game, int map_width, int map_height)
 {
