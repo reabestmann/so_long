@@ -6,17 +6,11 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:12:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 12:41:10 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:43:50 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	error(char *str)
-{
-	perror(str);
-	exit (1);
-}
 
 void	load_images(t_game *game)
 {
@@ -30,7 +24,7 @@ void	load_images(t_game *game)
 	game->collectible = mlx_xpm_file_to_image(game->mlx, "textures/collectible.xpm", &w, &h);
 }
 
-void	draw_map(char **map, t_game *game)
+void	draw_map(t_game *game)
 {
 	int	y;
 	int	x;
@@ -38,23 +32,23 @@ void	draw_map(char **map, t_game *game)
 	int	pixel_y;
 
 	y = 0;
-	while (map[y])
+	while (game->map[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (game->map[y][x])
 		{
 			pixel_x = x * TILE_SIZE;
 			pixel_y = y * TILE_SIZE;
-			if (map[y][x] == '1')
+			if (game->map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->window, game->wall, pixel_x, pixel_y);
-			else if (map[y][x] == '0')
+			else if (game->map[y][x] == '0')
 				mlx_put_image_to_window(game->mlx, game->window, game->floor, pixel_x, pixel_y);
-			else if (map[y][x] == 'P')
+			else if (game->map[y][x] == 'P')
 				mlx_put_image_to_window(game->mlx, game->window, game->player, pixel_x, pixel_y);
-			else if (map[y][x] == 'E')
+			else if (game->map[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->window, game->exit, pixel_x, pixel_y);
-			else if (map[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->window, game->exit, pixel_x, pixel_y);
+			else if (game->map[y][x] == 'C')
+				mlx_put_image_to_window(game->mlx, game->window, game->collectible, pixel_x, pixel_y);
 			x++;
 		}
 		y++;

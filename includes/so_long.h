@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:39:21 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 13:09:45 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:53:12 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 # define TILE_SIZE 64
 #endif
 
+/* EVENT_CLOSE for closing the window safely */
+#if defined (__APPLE__)
+# define EVENT_CLOSE 17
+#elif defined (__linux__)
+# define EVENT_CLOSE 33
+#endif
+
 /* included libraries */
 # include "ft_printf.h"
 # include "libft.h"
@@ -36,6 +43,7 @@
 /* Struct for MLX */
 typedef struct s_game
 {
+	char	**map;
 	void	*mlx;
 	void	*window;
 	int	width;
@@ -52,11 +60,14 @@ char	*get_next_line(int fd);
 /* map_utils.c */
 char	**get_map(char *file);
 void	print_map(char **map);
-void	free_array(char **map);
 int	map_height(char *file);
 int	map_width(char *file);
 /* window_utils.c */
 void    init_window(t_game *game, int map_width, int map_height);
 void	load_images(t_game *game);
-void	draw_map(char **map, t_game *game);
+void	draw_map(t_game *game);
+/* mem_err_utils.c */
+void	error(char *message);
+void	free_array(char **map);
+int	close_window(t_game *game);
 #endif

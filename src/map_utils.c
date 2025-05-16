@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:05:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 13:05:32 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:54:12 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,4 @@ char	**get_map(char *file)
 	map[i] = NULL;
 	close(fd);
 	return (map);
-}
-
-/* Function to free memory after using map */
-void	free_array(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
 }
