@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:39:21 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 12:38:44 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:09:45 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <errno.h>
 # include "mlx.h"
 
 /* Struct for MLX */
@@ -43,11 +45,11 @@ typedef struct s_game
 	void	*player;
 	void	*exit;
 	void	*collectible;
-} t_game
+} t_game;
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
-/* parse_map_utils.c */
+/* map_utils.c */
 char	**get_map(char *file);
 void	print_map(char **map);
 void	free_array(char **map);

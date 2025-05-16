@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:21:12 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 17:52:25 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:04:02 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int params, char **argv)
 
 	if (params == 2)
 	{
-		map = get_map(argv[1], &game);
+		map = get_map(argv[1]);
 		if (!map)
 			return (1);
 		init_window(&game, map_width(argv[1]), map_height(argv[1]));

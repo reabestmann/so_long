@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_utils.c                                  :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:05:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 12:30:31 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:05:32 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ int	map_width(char *file)
 	int		width;
 	char	c;
 
-	fd = open(filename, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
+	width = 0;
 	while (read(fd, &c, 1) > 0)
 	{
 		if (c == '\n' || c == '\0')

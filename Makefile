@@ -6,13 +6,13 @@
 #    By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:45:55 by rbestman          #+#    #+#              #
-#    Updated: 2025/05/14 15:38:05 by rbestman         ###   ########.fr        #
+#    Updated: 2025/05/16 13:14:42 by rbestman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler & flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ift_printf -Ilibft -Iincludes
+CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(MLX_DIR)
 
 # Directories
 LIBFT_DIR = libft
@@ -21,11 +21,9 @@ SRC_DIR = src
 
 # Uncomment the one you're using
 
-#MLX_DIR = minilibx-linux
+MLX_DIR = minilibx
 #MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm  # Linux
-
-#MLX_DIR = minilibx-mac
-#MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit  # macOS
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit  # macOS
 
 
 # libft + printf files
@@ -35,7 +33,8 @@ LIBFTPRINTF = $(PRINTF_DIR)/libftprintf.a
 # Source files
 SRC_FILES = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/get_next_line.c \
-	$(SRC_DIR)/map_utils.c
+	$(SRC_DIR)/map_utils.c \
+	$(SRC_DIR)/window_utils.c
 
 # Object files
 OBJ_FILES = $(SRC_FILES:.c=.o)
@@ -50,7 +49,7 @@ all: $(LIBFTPRINTF) $(LIBFT) $(NAME)
 
 # Link program
 $(NAME): $(OBJ_FILES)
-	@$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBFTPRINTF) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBFTPRINTF) $(LIBFT) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(NAME) compiled! ✔️"
 
 # Call ft_printf's Makefile
