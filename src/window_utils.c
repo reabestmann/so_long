@@ -26,8 +26,8 @@ void	load_images(t_game *game)
 			game->mlx, "textures/player.xpm", &w, &h);
 	game->exit = mlx_xpm_file_to_image(
 			game->mlx, "textures/exit.xpm", &w, &h);
-	game->collectible.img = mlx_xpm_file_to_image(
-			game->mlx, "textures/collectible.xpm", &w, &h);
+	game->item.img = mlx_xpm_file_to_image(
+			game->mlx, "textures/item.xpm", &w, &h);
 }
 
 /* Helper Function to put specified texture images into the window */
@@ -47,7 +47,7 @@ static void	put_images(t_game *game, int c, int x, int y)
 			game->mlx, game->window, game->exit, x, y);
 	else if (c == 'C')
 		mlx_put_image_to_window(
-			game->mlx, game->window, game->collectible.img, x, y);
+			game->mlx, game->window, game->item.img, x, y);
 }
 
 /* Function that creates the map inside the window line by line */
@@ -100,7 +100,7 @@ int	close_window(t_game *game)
 		mlx_destroy_image(game->mlx, game->wall);
 		mlx_destroy_image(game->mlx, game->player.img);
 		mlx_destroy_image(game->mlx, game->exit);
-		mlx_destroy_image(game->mlx, game->collectible.img);
+		mlx_destroy_image(game->mlx, game->item.img);
 		if (game->window)
 			mlx_destroy_window(game->mlx, game->window);
 //              mlx_destroy_display_(game->mlx); add when on linux

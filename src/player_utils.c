@@ -41,9 +41,9 @@ void	move_player(t_game *game, int key)
 	else
 		x = xy_pos(key, x);
 	c = game->map[y][x];
-	if (c == '1' || (c == 'E' && collectibles_remaining(game)))
+	if (c == '1' || (c == 'E' && items_remaining(game)))
 		return ;
-	if (c == 'E' && !collectibles_remaining(game))
+	if (c == 'E' && !items_remaining(game))
 		game_finished(game);
 	game->map[game->player.pos_y][game->player.pos_x] = '0';
 	game->player.pos_y = y;

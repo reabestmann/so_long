@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:39:21 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/17 18:03:37 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/17 18:22:09 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ typedef struct s_player
 	int		moves;
 }	t_player;
 
-typedef struct s_collectible
+typedef struct s_item
 {
 	void	*img;
 	int		total;
 	int		found;
-}	t_collectible;
+}	t_item;
 
 typedef struct s_game
 {
@@ -81,7 +81,7 @@ typedef struct s_game
 	void		*wall;
 	void		*floor;
 	void		*exit;
-	t_collectible	collectible;
+	t_item		item;
 	t_player	player;
 }	t_game;
 
@@ -93,19 +93,19 @@ void	reward(void);
 char	**get_map(char *file);
 int		map_height(char *file);
 int		map_width(char *file);
-void		free_array(char **map);
-void		error(char *message);
+void	free_array(char **map);
+void	error(char *message);
 /* window_utils.c */
-void		init_window(t_game *game, int map_width, int map_height);
-void		load_images(t_game *game);
-void		draw_map(t_game *game);
+void	init_window(t_game *game, int map_width, int map_height);
+void	load_images(t_game *game);
+void	draw_map(t_game *game);
 int		close_window(t_game *game);
 /* player_utils.c */
-void		find_player(t_game *game);
+void	find_player(t_game *game);
 int		handle_keypress(int key, t_game *game);
-void		move_player(t_game *game, int key);
-/* collectible_utils.c */
-void		count_total(t_game *game);
-int		collectibles_remaining(t_game *game);
-void		collect_item(t_game *game, int x, int y);
+void	move_player(t_game *game, int key);
+/* item_utils.c */
+void	count_total(t_game *game);
+int		items_remaining(t_game *game);
+void	collect_item(t_game *game, int x, int y);
 #endif

@@ -6,13 +6,13 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:05:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/17 17:44:32 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/17 18:26:07 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* Function to print map (for testing) */
+/* Function to print map (for testing)
 void	print_map(char **map)
 {
 	int	i;
@@ -20,13 +20,13 @@ void	print_map(char **map)
 	i = 0;
 	while (map[i])
 		ft_putstr_fd(map[i++], 1);
-}
+}*/
 
 /* Function to format error messages & exiting the program */
-void    error(char *message)
+void	error(char *message)
 {
-        perror(message);
-        exit (1);
+	perror(message);
+	exit (1);
 }
 
 /* Function to free memory used by map array after usage */
