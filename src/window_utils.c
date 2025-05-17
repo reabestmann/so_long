@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:12:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 15:33:06 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/17 16:11:00 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	load_images(t_game *game)
 			game->mlx, "textures/wall.xpm", &w, &h);
 	game->floor = mlx_xpm_file_to_image(
 			game->mlx, "textures/floor.xpm", &w, &h);
-	game->player = mlx_xpm_file_to_image(
+	game->player.img = mlx_xpm_file_to_image(
 			game->mlx, "textures/player.xpm", &w, &h);
 	game->exit = mlx_xpm_file_to_image(
 			game->mlx, "textures/exit.xpm", &w, &h);
-	game->collectible = mlx_xpm_file_to_image(
+	game->collectible.img = mlx_xpm_file_to_image(
 			game->mlx, "textures/collectible.xpm", &w, &h);
 }
 
@@ -41,13 +41,13 @@ static void	put_images(t_game *game, int c, int x, int y)
 			game->mlx, game->window, game->floor, x, y);
 	else if (c == 'P')
 		mlx_put_image_to_window(
-			game->mlx, game->window, game->player, x, y);
+			game->mlx, game->window, game->player.img, x, y);
 	else if (c == 'E')
 		mlx_put_image_to_window(
 			game->mlx, game->window, game->exit, x, y);
 	else if (c == 'C')
 		mlx_put_image_to_window(
-			game->mlx, game->window, game->collectible, x, y);
+			game->mlx, game->window, game->collectible.img, x, y);
 }
 
 /* Function that creates the map inside the window line by line */
@@ -87,4 +87,24 @@ void	init_window(t_game *game, int map_width, int map_height)
 			game->mlx, game->width, game->height, "so_long");
 	if (!game->window)
 		error("Error creating Window");
+}
+
+/* Function exiting & freeing all memory used by the program */
+int	close_window(t_game *game)
+{
+	if (game->map)
+		free_array(game->map);
+	if (game->mlx)
+	{
+		mlx_destroy_image(game->mlx, game->floor);
+		mlx_destroy_image(game->mlx, game->wall);
+		mlx_destroy_image(game->mlx, game->player.img);
+		mlx_destroy_image(game->mlx, game->exit);
+		mlx_destroy_image(game->mlx, game->collectible.img);
+		if (game->window)
+			mlx_destroy_window(game->mlx, game->window);
+//              mlx_destroy_display_(game->mlx); add when on linux
+	}
+	exit (0);
+	return (0);
 }

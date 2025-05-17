@@ -6,13 +6,13 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:05:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 14:54:12 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/17 17:44:32 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* Function to print map (for testing)
+/* Function to print map (for testing) */
 void	print_map(char **map)
 {
 	int	i;
@@ -20,7 +20,25 @@ void	print_map(char **map)
 	i = 0;
 	while (map[i])
 		ft_putstr_fd(map[i++], 1);
-}*/
+}
+
+/* Function to format error messages & exiting the program */
+void    error(char *message)
+{
+        perror(message);
+        exit (1);
+}
+
+/* Function to free memory used by map array after usage */
+void	free_array(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
 
 /* Funtion to get the number of lines in .ber file */
 int	map_height(char *file)

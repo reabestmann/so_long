@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:21:12 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/16 14:36:45 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/17 16:40:30 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int	main(int params, char **argv)
 		init_window(&game, map_width(argv[1]), map_height(argv[1]));
 		load_images(&game);
 		draw_map(&game);
-		mlx_hook(game.window, EVENT_CLOSE, 0, close_window, &game);
+		game.player.moves = 0;
+		find_player(&game);
+		count_total(&game);
+		mlx_hook(game.window, CLOSE, 0, close_window, &game);
+		mlx_hook(game.window, KEYPRESS, 1L, handle_keypress, &game);
 		mlx_loop(game.mlx);
 		return (0);
 	}
