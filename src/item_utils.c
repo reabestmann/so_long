@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 14:25:49 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/17 18:25:07 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:57:57 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	items_remaining(t_game *game)
 void	collect_item(t_game *game, int x, int y)
 {
 	game->item.found++;
-	game->map[y][x] = '0';
+	game->map[y][x] = 'P';
+	draw_map(game);
 	ft_printf("You found %d", game->item.found);
 	ft_printf(" of %d items! ૮ ྀིྀིྀིྀིྀི˶ᵔ ᵕ ᵔ˶ ྀིྀིྀིྀིྀིა \n",
 		game->item.total);

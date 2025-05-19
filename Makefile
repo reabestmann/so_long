@@ -6,7 +6,7 @@
 #    By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:45:55 by rbestman          #+#    #+#              #
-#    Updated: 2025/05/17 18:14:55 by rbestman         ###   ########.fr        #
+#    Updated: 2025/05/17 18:59:35 by rbestman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ SRC_FILES = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/map_utils.c \
 	$(SRC_DIR)/window_utils.c \
 	$(SRC_DIR)/player_utils.c \
-	$(SRC_DIR)/item_utils.c \
-	$(SRC_DIR)/reward.c
+	$(SRC_DIR)/item_utils.c
+#	$(SRC_DIR)/reward.c
 
 # Object files
 OBJ_FILES = $(SRC_FILES:.c=.o)
