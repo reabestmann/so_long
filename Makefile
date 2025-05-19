@@ -6,7 +6,7 @@
 #    By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:45:55 by rbestman          #+#    #+#              #
-#    Updated: 2025/05/17 18:59:35 by rbestman         ###   ########.fr        #
+#    Updated: 2025/05/19 15:57:22 by rbestman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ LIBFTPRINTF = $(PRINTF_DIR)/libftprintf.a
 # Source files
 SRC_FILES = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/get_next_line.c \
+	$(SRC_DIR)/get_map.c \
+	$(SRC_DIR)/validate_path.c \
 	$(SRC_DIR)/map_utils.c \
 	$(SRC_DIR)/window_utils.c \
 	$(SRC_DIR)/player_utils.c \

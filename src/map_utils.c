@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:05:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/17 18:26:07 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:48:43 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	map_height(char *file)
 	fd = open(file, O_RDONLY);
 	height = 0;
 	if (fd < 0)
-		return (-1);
+		error("Invalid map");
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -71,7 +71,7 @@ int	map_width(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (-1);
+		error("Invalid map");
 	width = 0;
 	while (read(fd, &c, 1) > 0)
 	{
@@ -86,18 +86,16 @@ int	map_width(char *file)
 }
 
 /* Function to parse map into a 2D array */
-char	**get_map(char *file)
+char	**malloc_map(char *file, int height)
 {
 	char	**map;
 	char	*line;
-	int		height;
 	int		i;
 	int		fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (NULL);
-	height = map_height(file);
+		error("Invalid map");
 	map = malloc(sizeof(char *) * (height + 1));
 	if (!map)
 	{
