@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:05:46 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/19 16:40:37 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:34:14 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	walls_valid(char **map, int height, int width)
 	int	y;
 
 	x = 0;
-	while(x < width)
+	while (x < width)
 	{
 		if (map[0][x] != '1' || map[height - 1][x] != '1')
 		{
@@ -83,7 +83,7 @@ static void	walls_valid(char **map, int height, int width)
 		x++;
 	}
 	y = 0;
-	while(y < height)
+	while (y < height)
 	{
 		if (map[y][0] != '1' || map[y][width - 1] != '1')
 		{
@@ -93,7 +93,7 @@ static void	walls_valid(char **map, int height, int width)
 		y++;
 	}
 }
-	
+
 static void	shape_valid(char **map, int expected_width)
 {
 	int	y;
@@ -117,7 +117,7 @@ char	**get_map(char *file)
 	int		height;
 	int		width;
 	char	**map;
-	
+
 	if (!ft_strnstr(file, ".ber", ft_strlen(file)))
 		error("Invalid map: wrong file format");
 	height = map_height(file);

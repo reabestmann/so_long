@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:12:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/17 16:11:00 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:51:54 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	init_window(t_game *game, int map_width, int map_height)
 /* Function exiting & freeing all memory used by the program */
 int	close_window(t_game *game)
 {
+	if (game->item.total != game->item.found)
+		ft_printf("You gave up :(\n");
 	if (game->map)
 		free_array(game->map);
 	if (game->mlx)

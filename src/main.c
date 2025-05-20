@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:21:12 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/17 16:40:30 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:06:27 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int params, char **argv)
 		game.player.moves = 0;
 		find_player(&game);
 		count_total(&game);
-		mlx_hook(game.window, CLOSE, 0, close_window, &game);
+		mlx_hook(game.window, EVENT_CLOSE, 0, close_window, &game);
 		mlx_hook(game.window, KEYPRESS, 1L, handle_keypress, &game);
 		mlx_loop(game.mlx);
 		return (0);

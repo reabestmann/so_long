@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:39:39 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/19 12:58:10 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:36:17 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ static void	game_finished(t_game *game)
 
 static int	xy_pos(int key, int i)
 {
-	if (key == KEY_W || key == KEY_A)
+	if (key == KEY_W || key == KEY_UP
+		|| key == KEY_LEFT || key == KEY_A)
 		return (i - 1);
-	if (key == KEY_S || key == KEY_D)
+	if (key == KEY_S || key == KEY_DOWN
+		|| key == KEY_D || key == KEY_RIGHT)
 		return (i + 1);
 	return (i);
 }
@@ -36,7 +38,8 @@ void	move_player(t_game *game, int key)
 
 	x = game->player.pos_x;
 	y = game->player.pos_y;
-	if (key == KEY_W || key == KEY_S)
+	if (key == KEY_W || key == KEY_UP
+		|| key == KEY_S || key == KEY_DOWN)
 		y = xy_pos(key, y);
 	else
 		x = xy_pos(key, x);
@@ -53,13 +56,14 @@ void	move_player(t_game *game, int key)
 		collect_item(game, x, y);
 	draw_map(game);
 	game->player.moves++;
-	ft_printf("Moves: %d ꒰ঌ₍ᐢ. .ᐢ₎໒꒱\n", game->player.moves);
+	ft_printf("Moves: %d\n", game->player.moves);
 }
 
 int	handle_keypress(int key, t_game *game)
 {
 	if (key == KEY_W || key == KEY_S
-		|| key == KEY_A || key == KEY_D)
+		|| key == KEY_A || key == KEY_D || key == KEY_UP
+		|| key == KEY_DOWN || key == KEY_LEFT || key == KEY_RIGHT)
 		move_player(game, key);
 	else if (key == KEY_ESC)
 		close_window(game);
