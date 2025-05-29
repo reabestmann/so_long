@@ -6,10 +6,15 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 14:25:49 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/19 12:57:57 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:32:58 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifdef BONUS
+# include "so_long_bonus.h"
+#else
+# include "so_long_structs.h"
+#endif
 #include "so_long.h"
 
 int	items_remaining(t_game *game)

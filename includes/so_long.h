@@ -6,7 +6,7 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:39:21 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/20 14:12:12 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:20:16 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 /* included libraries */
 # include "so_long_macros.h"
-# include "so_long_structs.h"
 # include "ft_printf.h"
 # include "libft.h"
 # include <fcntl.h>

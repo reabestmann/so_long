@@ -6,11 +6,16 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:39:39 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/20 14:36:17 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:32:19 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifdef BONUS
+# include "so_long_bonus.h"
+#else
+# include "so_long_structs.h"
+#endif
+# include "so_long.h"
 
 static void	game_finished(t_game *game)
 {

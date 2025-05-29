@@ -6,10 +6,15 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:29:50 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/19 17:29:27 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:30:35 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifdef BONUS
+# include "so_long_bonus.h"
+#else
+# include "so_long_structs.h"
+#endif
 #include "so_long.h"
 
 static char	**dup_map(char **map, int height)

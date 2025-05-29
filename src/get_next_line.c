@@ -6,10 +6,15 @@
 /*   By: rbestman <rbestman@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:15:31 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/14 15:35:03 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:29:34 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifdef BONUS
+# include "so_long_bonus.h"
+#else
+# include "so_long_structs.h"
+#endif
 #include "so_long.h"
 
 static char	*append_buffers(char *small_buf, char *big_buf)

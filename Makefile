@@ -6,7 +6,7 @@
 #    By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:45:55 by rbestman          #+#    #+#              #
-#    Updated: 2025/05/19 15:57:22 by rbestman         ###   ########.fr        #
+#    Updated: 2025/05/28 16:06:18 by rbestman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(LIBFT_DIR) -I$(PRINTF_DIR) -I$(MLX
 LIBFT_DIR = libft
 PRINTF_DIR = ft_printf
 SRC_DIR = src
+BONUS_DIR = src/bonus
 
 # Uncomment the one you're using
 
@@ -39,15 +40,25 @@ SRC_FILES = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/window_utils.c \
 	$(SRC_DIR)/player_utils.c \
 	$(SRC_DIR)/item_utils.c
-#	$(SRC_DIR)/reward.c
+
+SRC_BONUS = $(BONUS_DIR)/main.c \
+	$(BONUS_DIR)/window_utils.c \
+	$(BONUS_DIR)/animate.c \
+	$(SRC_DIR)/get_next_line.c \
+	$(SRC_DIR)/get_map.c \
+	$(SRC_DIR)/validate_path.c \
+	$(SRC_DIR)/map_utils.c \
+	$(SRC_DIR)/player_utils.c \
+	$(SRC_DIR)/item_utils.c
 
 # Object files
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
-# OBJ_BONUS = $(SRC_BONUS:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 # Output files
 NAME = so_long
+BONUS_NAME = so_long_bonus
 
 # Default rule
 all: $(LIBFTPRINTF) $(LIBFT) $(NAME)
@@ -56,6 +67,12 @@ all: $(LIBFTPRINTF) $(LIBFT) $(NAME)
 $(NAME): $(OBJ_FILES)
 	@$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBFTPRINTF) $(LIBFT) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(NAME) compiled! ✔️"
+
+bonus: $(LIBFTPRINTF) $(LIBFT) $(BONUS_NAME)
+
+$(BONUS_NAME): $(OBJ_BONUS)
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFTPRINTF) $(LIBFT) -o $(BONUS_NAME) $(MLX_FLAGS)
+	@echo "$(BONUS_NAME) bonus compiled! ✔️"
 
 # Call ft_printf's Makefile
 $(LIBFTPRINTF):
@@ -71,6 +88,9 @@ $(LIBFT):
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+$(BONUS_DIR)/%.o: $(BONUS_DIR)/%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 # clean & remake
 clean:
 	@rm -f $(OBJ_FILES) $(OBJ_BONUS)
@@ -79,11 +99,11 @@ clean:
 	@echo "cleaned! 🧹"
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS_NAME)
 	@make -C $(PRINTF_DIR) fclean --silent
 	@make -C $(LIBFT_DIR) fclean --silent
 	@echo "fully cleaned! 🗑️"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

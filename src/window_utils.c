@@ -6,10 +6,11 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:12:06 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/20 13:51:54 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:31:38 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long_structs.h"
 #include "so_long.h"
 
 /* Function that turns each .xpm file into an image */

@@ -6,10 +6,15 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:05:46 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/20 13:34:14 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:30:13 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifdef BONUS
+# include "so_long_bonus.h"
+#else
+# include "so_long_structs.h"
+#endif
 #include "so_long.h"
 
 static void	pec_valid(char **map)

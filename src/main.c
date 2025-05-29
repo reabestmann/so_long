@@ -6,10 +6,11 @@
 /*   By: rbestman <rbestman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:21:12 by rbestman          #+#    #+#             */
-/*   Updated: 2025/05/20 14:06:27 by rbestman         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:28:02 by rbestman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long_structs.h"
 #include "so_long.h"
 
 int	main(int params, char **argv)
